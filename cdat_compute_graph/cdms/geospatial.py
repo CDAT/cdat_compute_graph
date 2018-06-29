@@ -1,7 +1,7 @@
 from compute_graph import ComputeNode, register_computation
 
 GEOSPATIAL_NODE_TYPE = "geospatial"
-functions = ["subset", "lat", "lon", "time", "lev", "axis"]
+functions = ["subset", "subregion", "lat", "lon", "time", "lev", "axis"]
 
 INVALID_GEOSPATIAL_FUNC = "Expected geospatial function; received '%s'."
 
@@ -14,6 +14,9 @@ def compute_geo(attributes):
 
     if func == "subset":
         return array(**args)
+
+    if func == "subregion":
+        return array.subRegion(**args)
 
     if func == "lat":
         return array.getLatitude()
