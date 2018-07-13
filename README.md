@@ -29,7 +29,7 @@ Create a new release on Github [here](https://github.com/CDAT/cdat_compute_graph
   
 #### Build and Upload
 
-To build the software run `conda build . -c cdat -conda-forge`
+To build the software run `conda build . -c cdat -c conda-forge`
 
 To upload the newly built file, run `anaconda -t $TOKEN upload -u cdat $PATH`
   * $TOKEN comes from https://anaconda.org/cdat/settings/access
