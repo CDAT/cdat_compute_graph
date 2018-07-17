@@ -6,8 +6,8 @@ ESMF_METHODS = ["linear", "conserve", "patch"]
 
 @register_computation(REGRID_NODE_TYPE)
 def compute_regrid(attributes):
-    base_variable = attributes["base"]
-    target_variable = attributes["target"]
+    base_variable = attributes["left_value"]
+    target_variable = attributes["right_value"]
     args = attributes.get("args", {})
 
     if "tool" in args and args["tool"] in AVAILABLE_TOOLS:
@@ -16,17 +16,18 @@ def compute_regrid(attributes):
         else:
             return base_variable.regrid(target_variable.getGrid(), regridTool=args["tool"])
     return base_variable.regrid(target_variable.getGrid())
+        
 
 
 class RegridFunction(ComputeNode):
-    def __init__(self, base, target, **args):
-        super(GeospatialFunction, self).__init__()
-        self.node_type = GEOSPATIAL_NODE_TYPE
+    def __init__(self, left_value, right_value, **args):
+        super(RegridFunction, self).__init__()
+        self.node_type = REGRID_NODE_TYPE
         self.node_params = {
-            "base": "The variable that will be regrided",
-            "target": "The variable that has the desired grid",
+            "left_value": "The variable that will be regrided",
+            "right_value": "The variable that has the desired grid",
         }
-        self.base = base
-        self.target = target
+        self.left_value = left_value
+        self.right_value = right_value
         if args:
             self.args = args
