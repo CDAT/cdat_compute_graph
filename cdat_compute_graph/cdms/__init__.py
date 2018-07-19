@@ -4,5 +4,6 @@ try:
     from geospatial import GeospatialFunction
     from dataset import DatasetFunction
     from metadata import MetadataFunction
+    from regrid import RegridFunction
 except:
     pass
