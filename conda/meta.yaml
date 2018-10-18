@@ -1,29 +1,30 @@
 package:
   name: cdat_compute_graph
-  version: 1.2.0
+  version: 1.2.1
 
 source:
-  git_tag: 1.2.0
-  git_url: https://github.com/cdat/cdat_compute_graph
-  
+    git_rev: master
+    git_url: https://github.com/cdat/cdat_compute_graph
 
 requirements:
   build:
-    - python {{ python }}
+    - python
     - setuptools
     - nose
     - coverage
+    - pip
 
-  run: 
+  run:
     - python
-    - numpy
     - cdms2
     - compute_graph
 
+build:
+    number: 0
+    noarch: python
+    script: python -m pip install --no-deps --ignore-installed .
+
 about:
-  home: https://github.com/cdat/cdat_compute_graph
+  home: https://github.com/cdat/compute_graph
   license: BSD
   summary: "A package that extends compute_graph with nodes that handle cdms variables and operations"
-
-build:
-    noarch_python: False
