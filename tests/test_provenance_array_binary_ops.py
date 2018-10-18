@@ -66,8 +66,8 @@ class TestProvenanceArrayBinaryComputations(basetest.CDMSBaseTest):
         self.assertArraysEqual(compute_binary("arctan2", -threes[0], -threes[0], outer=True), -3 * pis / 4)
 
     def testOuterproduct(self):
-        arr1 = numpy.array(range(2))
-        arr2 = numpy.array(range(2))
+        arr1 = numpy.array(list(range(2)))
+        arr2 = numpy.array(list(range(2)))
         arr_answer = numpy.array(
             [
                 [0, 0],
